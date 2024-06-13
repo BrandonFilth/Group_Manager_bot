@@ -134,6 +134,15 @@ def update_user_twitter(chat_id, new_twitter):
     conn.commit()
     conn.close()
 
+# Función para actualizar la billetera Ethereum de un usuario
+def update_user_wallet(chat_id, new_wallet):
+    conn = sqlite3.connect('users.db')
+    c = conn.cursor()
+    c.execute("UPDATE users SET wallet = ? WHERE chat_id = ?", (new_wallet, chat_id))
+    conn.commit()
+    conn.close()
+
+
 # Función para verificar si la wallet está asociada a otro usuario
 def is_wallet_associated_with_another_user(wallet, current_user_id):
     conn = sqlite3.connect('users.db')
@@ -145,6 +154,7 @@ def is_wallet_associated_with_another_user(wallet, current_user_id):
     conn.close()
     return user is not None
 
+# Función para obtener el balance de suscripción de un usuario
 def get_subscription_balance(chat_id):
     conn = sqlite3.connect('users.db')
     c = conn.cursor()

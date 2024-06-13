@@ -1,7 +1,7 @@
 import telebot
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pay_verification import verify_eth_transaction
-from database import add_user, get_user_by_chat_id, update_subscription_days, update_user_email, update_user_twitter
+from database import add_user, get_user_by_chat_id, update_subscription_days, update_user_email, update_user_twitter, update_user_wallet
 from group import generate_invite_link
 
 
@@ -47,6 +47,7 @@ def register_user_handlers(bot, admin_ids, group_id, destination_wallet):
             user = get_user_by_chat_id(message.chat.id)
             if user:
                 update_subscription_days(message.chat.id, 30)
+                update_user_wallet(message.chat.id, eth_user_wallet)  # Actualiza la billetera del usuario
                 bot.send_message(message.chat.id, "¡Pago confirmado! Tu suscripción ha sido extendida 30 días más.")
                 
                 for admin_id in admin_ids:

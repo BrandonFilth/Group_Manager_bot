@@ -8,9 +8,11 @@ def daily_subscription_update(bot, admin_ids):
     users = get_all_users()
     for user in users:
         chat_id, telegram_username, subscription_days = user[2], user[1], user[6]
-        # Reducir los días de suscripción
-        update_subscription_days(chat_id, -1)
-        subscription_days -= 1  # Actualizar localmente después de la reducción
+        # Verificar si el usuario todavía tiene días de suscripción antes de reducir
+        if subscription_days > 0:
+            # Reducir los días de suscripción
+            update_subscription_days(chat_id, -1)
+            subscription_days -= 1  # Actualizar localmente después de la reducción
 
         # Enviar recordatorio si queda 1 día
         if subscription_days == 1:
