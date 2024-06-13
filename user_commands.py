@@ -11,3 +11,5 @@ def register_user_commands(bot):
         else:
             response = "No cuentas con una suscripción activa."
         bot.reply_to(message, response)
+
+

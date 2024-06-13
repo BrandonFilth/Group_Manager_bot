@@ -8,6 +8,8 @@ from user_commands import register_user_commands
 # Crear el objeto bot con el token
 bot = telebot.TeleBot("7103546649:AAG4XiXmRjIcXdd-6dmoWq4eYfFJpLFYB5U")
 
+# Wallet de destino para las subscripciones
+destination_wallet = "0x2ec487661b101fd2cf32cbda392414bb9b2a5c5b"
 #              dev        kakarot
 admin_ids = [1737264011, 1602791885]
 
@@ -24,7 +26,7 @@ scheduler_thread.daemon = True
 scheduler_thread.start()
 
 # Registrar los handlers de usuario y administrador
-register_user_handlers(bot, admin_ids, group_id)
+register_user_handlers(bot, admin_ids, group_id, destination_wallet)
 register_admin_handlers(bot, admin_ids)
 register_user_commands(bot)
 

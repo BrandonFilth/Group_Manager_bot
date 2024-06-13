@@ -80,7 +80,7 @@ def get_user_by_chat_id(chat_id):
     conn = sqlite3.connect('users.db')
     c = conn.cursor()
     c.execute('''
-    SELECT * FROM users WHERE telegram_username = ?
+    SELECT * FROM users WHERE chat_id = ?
     ''', (chat_id,))
     user = c.fetchone()
     conn.close()
