@@ -170,5 +170,3 @@ def get_subscription_balance(chat_id):
     
 # Inicializar la base de datos al cargar el módulo
 init_db()
-
-#BrandonFilth|-4278497926|0x6d465F5CB6FFc918761d4cC9A675F1ED2c6bB764|brandonfilth1@gmail.com|BrandonFilth1|30
