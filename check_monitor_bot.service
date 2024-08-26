@@ -1,0 +1,9 @@
+[Unit]
+Description=Check Monitor Bot Script
+
+[Service]
+ExecStart=/check_monitor_bot.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
